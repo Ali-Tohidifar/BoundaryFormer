@@ -156,6 +156,21 @@ def inference_on_dataset(
 
             start_compute_time = time.perf_counter()
             outputs = model(inputs)
+            # # import ipdb; ipdb.set_trace()
+            # # --------------- visualization ---------------
+            # import cv2
+            # from detectron2.utils.visualizer import ColorMode, Visualizer
+            # import os
+            
+            # img = cv2.imread(inputs[0]['file_name'])
+            # img = img[:,:,[2,1,0]]
+            # visualizer = Visualizer(img)
+            # out = visualizer.draw_instance_predictions(outputs[0]['instances'].to('cpu'))
+            # output_folder = 'initial_results/itr_210k'
+            # output_path = os.path.join(output_folder, inputs[0]['file_name'].split('/')[-1])
+            # out.save(output_path)
+            # print(f'wrote to {output_path}')
+            # # --------------- visualization ---------------
             if torch.cuda.is_available():
                 torch.cuda.synchronize()
             total_compute_time += time.perf_counter() - start_compute_time

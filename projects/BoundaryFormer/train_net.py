@@ -25,6 +25,11 @@ from detectron2.evaluation import (
     SemSegEvaluator,
     verify_results,
 )
+from detectron2.data.datasets import register_coco_instances
+
+# Register the train and val datasets
+register_coco_instances("floorplandata_train", {}, "/home/ali.tohidifar75/coco_dataset/floorplandata/annotations/instances_train.json", "/home/ali.tohidifar75/coco_dataset/floorplandata/train")
+register_coco_instances("floorplandata_val", {}, "/home/ali.tohidifar75/coco_dataset/floorplandata/annotations/instances_val.json", "/home/ali.tohidifar75/coco_dataset/floorplandata/val")
 
 from detectron2.solver import get_default_optimizer_params
 from detectron2.solver.build import maybe_add_gradient_clipping
